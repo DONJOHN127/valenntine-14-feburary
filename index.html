@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Will You Be My Valentine? 💝</title>
   <link rel="stylesheet" href="styles.css" />
-  <!-- Load your app AFTER parsing HTML -->
   <script src="app.js" defer></script>
 </head>
 
@@ -16,53 +15,43 @@
     <h1 id="title">Loading…</h1>
     <p id="subtitle" class="muted"></p>
 
-    <div id="stage" class="stage">
-      <!-- injected -->
-    </div>
-
+    <div id="stage" class="stage"></div>
     <div id="controls" class="controls"></div>
   </main>
 
+  <!-- Hidden background music -->
+  <audio id="bgm" loop preload="auto" playsinline>
+    <source src="audio.mp3" type="audio/mpeg" />
+  </audio>
 
- <!-- Hidden background music -->
-<audio id="bgm" loop preload="auto" playsinline>
-  <source src="audio.mp3" type="audio/mpeg" />
-</audio>
+  <!-- Tap-to-play overlay (shows only if autoplay is blocked) -->
+  <div id="musicGate" class="musicGate hidden">
+    <button id="musicGateBtn" class="btn">💖 Tap to start our song</button>
+  </div>
 
-<div id="musicGate" class="musicGate hidden">
-  <button id="musicGateBtn" class="btn">💖 Tap to start our song</button>
-</div>
+  <script>
+    const bgm = document.getElementById("bgm");
+    const gate = document.getElementById("musicGate");
+    const gateBtn = document.getElementById("musicGateBtn");
 
-<script>
-  const bgm = document.getElementById("bgm");
-  const gate = document.getElementById("musicGate");
-  const gateBtn = document.getElementById("musicGateBtn");
-
-  async function startMusic() {
-    try {
-      bgm.volume = 0.8; // optional
-      await bgm.play();
-      gate.classList.add("hidden");
-      cleanup();
-    } catch (e) {
-      gate.classList.remove("hidden");
-      console.warn("Music blocked or failed:", e);
+    async function startMusic() {
+      try {
+        bgm.volume = 0.8;
+        await bgm.play();
+        gate.classList.add("hidden");
+      } catch (e) {
+        gate.classList.remove("hidden");
+        console.warn("Music blocked or failed:", e);
+      }
     }
-  }
 
-  function cleanup() {
-    window.removeEventListener("pointerdown", startMusic);
-    window.removeEventListener("keydown", startMusic);
-    window.removeEventListener("touchstart", startMusic);
-  }
+    // Button works (user gesture)
+    gateBtn.addEventListener("click", startMusic);
 
-  // Button always works (user gesture)
-  gateBtn.addEventListener("click", startMusic);
-
-  // Best UX: first interaction anywhere starts music
-  window.addEventListener("pointerdown", startMusic, { once: true });
-  window.addEventListener("touchstart", startMusic, { once: true });
-  window.addEventListener("keydown", startMusic, { once: true });
-
-  // IMPORTANT: do NOT call startMusic() automatically on load
-</script>
+    // First interaction anywhere starts music (best UX)
+    window.addEventListener("pointerdown", startMusic, { once: true });
+    window.addEventListener("touchstart", startMusic, { once: true });
+    window.addEventListener("keydown", startMusic, { once: true });
+  </script>
+</body>
+</html>
