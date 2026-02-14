@@ -1,160 +1,119 @@
 :root{
-  --bg1: #ffb7c5;        /* fallback pink */
-  --bg2: #ffdde4;        /* fallback light pink */
+  --bg1: #ff9fb3;
+  --bg2: #ffd1dc;
   --btn: #ff4d6d;
   --btnHover: #ff2f58;
   --text: #2b1b1f;
-
-  --card: rgba(255,255,255,.78);
-  --shadow: 0 18px 60px rgba(0,0,0,.18);
-  --radius: 22px;
-
-  --maxw: 720px;
 }
 
-*{ box-sizing: border-box; }
-html, body{ height: 100%; margin: 0; }
+*{ box-sizing:border-box; }
+html,body{ height:100%; margin:0; }
 body{
   font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
   color: var(--text);
-  overflow: hidden; /* prevents float emojis from making scrollbars */
+  overflow: hidden;
+  display: grid;
+  place-items: center;
+  padding: 24px 14px;
 }
 
-/* Full-screen gradient background */
+/* FULL SCREEN BACKGROUND */
 #bg{
   position: fixed;
   inset: 0;
   z-index: 0;
-  background: radial-gradient(1200px 800px at 30% 20%, rgba(255,255,255,.45), transparent 60%),
-              linear-gradient(135deg, var(--bg1), var(--bg2));
+  background: linear-gradient(135deg, var(--bg1), var(--bg2));
 }
 
-/* Center the app/card */
-#app.card{
+/* CARD */
+main.card{
   position: relative;
   z-index: 1;
-  min-height: 100vh;
-  display: grid;
-  place-items: center;
-  padding: 28px 16px;
-}
-
-/* Actual card content wrapper (use <main class="card" id="app"> already in your HTML) */
-#app{
-  width: min(var(--maxw), 92vw);
-  background: var(--card);
-  border-radius: var(--radius);
-  box-shadow: var(--shadow);
+  width: min(760px, 92vw);
+  background: rgba(255,255,255,.80);
+  border-radius: 22px;
+  box-shadow: 0 18px 60px rgba(0,0,0,.18);
+  padding: 28px 22px;
+  text-align: center;
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
-  padding: 28px 22px;
 }
 
-/* Titles */
 #title{
-  margin: 0 0 6px 0;
-  text-align: center;
-  font-weight: 800;
-  letter-spacing: .2px;
-  font-size: clamp(28px, 4vw, 44px);
+  margin: 0 0 6px;
+  font-weight: 900;
+  font-size: clamp(30px, 4.5vw, 50px);
 }
+
 #subtitle{
-  margin: 0 0 16px 0;
-  text-align: center;
+  margin: 0 0 14px;
   opacity: .75;
   font-size: clamp(14px, 2vw, 18px);
 }
-.muted{ opacity: .75; }
 
-/* Stage content big + centered */
-.stage{
-  text-align: center;
-  margin: 8px auto 18px;
-  padding: 10px 6px;
-}
 .big{
-  font-size: clamp(26px, 4.2vw, 46px);
-  font-weight: 800;
-  line-height: 1.05;
+  font-size: clamp(26px, 4vw, 46px);
+  font-weight: 900;
+  line-height: 1.08;
 }
+
 .small{
   margin-top: 10px;
-  font-size: clamp(14px, 2.1vw, 18px);
   opacity: .75;
+  font-size: clamp(14px, 2vw, 18px);
 }
 
-/* Controls stay stable */
 .controls{
-  display: flex;
-  justify-content: center;
+  display:flex;
+  justify-content:center;
   gap: 14px;
   flex-wrap: wrap;
+  min-height: 56px; /* prevents jumping */
   position: relative;
-  min-height: 56px; /* keeps layout from jumping when No moves */
+  margin-top: 12px;
 }
 
-/* Buttons */
 .btn{
-  appearance: none;
   border: 0;
   cursor: pointer;
   padding: 14px 18px;
   border-radius: 999px;
-  font-weight: 800;
+  font-weight: 900;
   font-size: 16px;
-  color: white;
+  color: #fff;
   background: var(--btn);
   box-shadow: 0 10px 22px rgba(255,77,109,.35);
-  transition: transform .12s ease, filter .12s ease, background .12s ease;
-  user-select: none;
+  transition: transform .12s ease, background .12s ease;
   min-width: 140px;
 }
+
 .btn:hover{ background: var(--btnHover); transform: translateY(-1px); }
-.btn:active{ transform: translateY(1px) scale(.99); }
+.btn:active{ transform: translateY(1px); }
 
 .btn.danger{
   background: #2b1b1f;
   box-shadow: 0 10px 22px rgba(0,0,0,.25);
 }
-.btn.danger:hover{ filter: brightness(1.08); }
 
-/* Range meter (step 2) */
-.meter{
-  display: grid;
-  gap: 10px;
-  justify-items: center;
-  margin-top: 10px;
-}
-input[type="range"]{
-  width: min(520px, 84vw);
-}
-
-/* Pop animation */
-.pop{ animation: pop .22s ease; }
-@keyframes pop{
-  from{ transform: scale(.98); opacity: .7; }
-  to{ transform: scale(1); opacity: 1; }
-}
-
-/* Floating emojis */
+/* FLOATING EMOJIS */
 .float{
   position: fixed;
   z-index: 0;
   bottom: -40px;
   font-size: 26px;
-  opacity: .9;
   pointer-events: none;
   animation-name: floatUp;
   animation-timing-function: linear;
   will-change: transform, opacity;
 }
+
 @keyframes floatUp{
   0%   { transform: translate3d(0,0,0) rotate(0deg); opacity: 0; }
-  10%  { opacity: .9; }
+  10%  { opacity: .95; }
   100% { transform: translate3d(var(--drift), -110vh, 0) rotate(var(--rot)); opacity: 0; }
 }
 
-/* Music gate */
+/* MUSIC GATE */
 .musicGate{
   position: fixed;
   inset: 0;
@@ -164,4 +123,5 @@ input[type="range"]{
   background: rgba(0,0,0,.25);
   backdrop-filter: blur(6px);
 }
-.hidden{ display: none !important; }
+
+.hidden{ display:none !important; }
