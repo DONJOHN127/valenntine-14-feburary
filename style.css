@@ -24,14 +24,7 @@ body {
   padding: 24px 14px;
 }
 
-/* FULL SCREEN PINK BACKGROUND */
-#bg {
-  position: fixed;
-  inset: 0;
-  z-index: 0;
-  background-color: #ff9fb3; /* Pink background */
-}
-
+/* FULL SCREEN PINK BACKGROUND */ #bg { position: fixed; inset: 0; z-index: 0; background-color: #ff9fb3; /* Pink background */ }
 
 /* CARD */
 main.card{
