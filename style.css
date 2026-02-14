@@ -40,29 +40,30 @@ main.card{
   -webkit-backdrop-filter: blur(10px);
 }
 
-#title{
+#title {
   margin: 0 0 6px;
   font-weight: 900;
-  font-size: clamp(30px, 4.5vw, 50px);
+  font-size: clamp(40px, 6vw, 70px); /* Increased font size */
 }
 
-#subtitle{
+#subtitle {
   margin: 0 0 14px;
   opacity: .75;
-  font-size: clamp(14px, 2vw, 18px);
+  font-size: clamp(20px, 3vw, 30px); /* Increased font size */
 }
 
-.big{
-  font-size: clamp(26px, 4vw, 46px);
+.big {
+  font-size: clamp(36px, 6vw, 60px); /* Increased font size */
   font-weight: 900;
   line-height: 1.08;
 }
 
-.small{
+.small {
   margin-top: 10px;
   opacity: .75;
-  font-size: clamp(14px, 2vw, 18px);
+  font-size: clamp(20px, 3vw, 30px); /* Increased font size */
 }
+
 
 .controls{
   display:flex;
