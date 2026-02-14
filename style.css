@@ -30,7 +30,6 @@ body {
   inset: 0;
   z-index: 0;
   background-color: #ff9fb3; /* Pink background */
-  height: 100%; /* Ensures the background takes up the entire viewport */
 }
 
 
