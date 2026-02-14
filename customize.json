@@ -1,0 +1,62 @@
+{
+  "valentineName": "Saman Gull",
+  "pageTitle": "Will You Be My Valentine? 💝",
+
+  "floatingEmojis": {
+    "hearts": ["❤️", "💖", "💝", "💗", "💓"],
+    "bears": ["🧸", "🐻"]
+  },
+
+  "questions": {
+    "first": {
+      "text": "Do you like me?",
+      "yesBtn": "Yes",
+      "noBtn": "No",
+      "secretAnswer": "I don't like you, I love you! ❤️"
+    },
+    "second": {
+      "text": "How much do you love me?",
+      "startText": "This much!",
+      "nextBtn": "Next ❤️"
+    },
+    "third": {
+      "text": "Will you be my Valentine? 🌹",
+      "yesBtn": "Yes!",
+      "noBtn": "No"
+    }
+  },
+
+  "loveMessages": {
+    "extreme": "WOOOOW You love me that much?? 🥰🚀💝",
+    "high": "To infinity and beyond! 🚀💝",
+    "normal": "And beyond! 🥰"
+  },
+
+  "celebration": {
+    "title": "Yay! I'm the luckiest person in the world! 🎉💝",
+    "message": "Now come get your gift 🤗💋",
+    "emojis": "🎁💖🤗💝💋❤️💕"
+  },
+
+  "colors": {
+    "backgroundStart": "#ffafbd",
+    "backgroundEnd": "#ffc3a0",
+    "buttonBackground": "#ff6b6b",
+    "buttonHover": "#ff8787",
+    "textColor": "#ff4757"
+  },
+
+  "animations": {
+    "floatIntervalMs": 600,
+    "floatLifetimeMs": 9000
+  },
+
+  "music": {
+    "enabled": true,
+    "autoplay": false,
+    "musicUrl": "",
+    "startText": "🎵 Play Music",
+    "stopText": "🔇 Stop Music",
+    "volume": 0.5
+  }
+}
