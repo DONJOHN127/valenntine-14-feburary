@@ -32,7 +32,5 @@ No build steps or package installs, because this is pure static web:
 cd valentine-14-feburary
 Double‑click index.html
 Or serve via simple HTTP (like live-server or python -m http.server) for consistent behavior
-
-
-
+ use this command : python -m http.server 8000
 
